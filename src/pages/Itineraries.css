@@ -1,0 +1,586 @@
+/* ─── Urgent Trip Alert (Small Banner) ────────────────────────────────────── */
+.urgent-trip-alert-small {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
+  animation: slide-down 0.4s ease-out;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.alert-icon-small {
+  font-size: 24px;
+  animation: pulse-alert 2s infinite;
+}
+
+@keyframes pulse-alert {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.alert-info-small {
+  flex: 1;
+  font-size: 15px;
+  color: #fca5a5;
+}
+
+.alert-info-small strong {
+  color: white;
+  margin-right: 4px;
+}
+
+.alert-btn-small {
+  background: rgba(239,68,68,0.2);
+  color: white;
+  border: 1px solid rgba(239,68,68,0.4);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.alert-btn-small:hover {
+  background: rgba(239,68,68,0.4);
+}
+
+/* ─── All Trips Section ──────────────────────────────────────────────────── */
+.all-trips-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+}
+
+.no-other-trips {
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+.trips-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.trip-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.trip-card.expanded {
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.trip-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.trip-card-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trip-card-date {
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 800;
+  color: white;
+}
+
+.trip-card-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.trip-card-days {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: rgba(255,255,255,0.8);
+}
+
+.trip-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.trip-card-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #a5b4fc;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.2);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.expand-icon {
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  transition: color 0.2s;
+}
+.trip-card:hover .expand-icon { color: white; }
+
+.trip-card-body {
+  padding: 0 20px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  margin-top: 8px;
+  padding-top: 20px;
+}
+
+/* ─── Bus Rendering Styles (Re-used) ─────────────────────────────────────── */
+.trip-type-group {
+  margin-bottom: 24px;
+}
+.trip-type-group:last-child {
+  margin-bottom: 0;
+}
+
+.trip-type-title {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.trip-buses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.bus-grid-card {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bus-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.bus-num-badge {
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bus-type-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  margin-right: 8px;
+}
+
+.bus-fill-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fill-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+}
+.fill-count.full { color: #4ade80; }
+
+.full-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: #166534;
+  background: #4ade80;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Progress track */
+.bus-progress-track {
+  height: 3px;
+  background: rgba(255,255,255,0.05);
+  width: 100%;
+}
+.bus-progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Cockpit & Seat Grid (Vertical) */
+.seat-grid-wrap {
+  padding: 16px;
+}
+
+.bus-cockpit {
+  text-align: center;
+  padding: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px 8px 0 0;
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.seat-col-headers {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+.seat-col-headers span {
+  width: 38px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+}
+
+.seat-row-grid {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.seat-pair-grid {
+  display: flex;
+  gap: 4px;
+}
+
+.aisle-gap-grid, .aisle-gap {
+  width: 16px;
+}
+
+.seat-cell {
+  width: 38px;
+  height: 36px;
+  border-radius: 6px 6px 3px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid;
+  position: relative;
+}
+
+.seat-cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 6px 6px 0 0;
+}
+
+.seat-cell.empty {
+  border: none;
+  background: transparent;
+}
+
+.seat-cell.free {
+  background: rgba(34,197,94,0.05);
+  border-color: rgba(34,197,94,0.2);
+  color: rgba(34,197,94,0.5);
+}
+.seat-cell.free::before { background: rgba(34,197,94,0.3); }
+
+.seat-cell.booked {
+  background: rgba(239,68,68,0.1);
+  border-color: rgba(239,68,68,0.3);
+  color: #fca5a5;
+}
+.seat-cell.booked::before { background: rgba(239,68,68,0.5); }
+
+.seat-cell-num {
+  font-size: 12px;
+  font-weight: 800;
+}
+.seat-cell-name {
+  font-size: 9px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 34px;
+}
+
+/* Passenger List */
+.passenger-list {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.passenger-list-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.no-passengers {
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.passenger-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.passenger-rows::-webkit-scrollbar { width: 4px; }
+.passenger-rows::-webkit-scrollbar-track { background: transparent; }
+.passenger-rows::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+.passenger-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 6px;
+}
+
+.p-seat {
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+  background: rgba(239,68,68,0.2);
+  border: 1px solid rgba(239,68,68,0.3);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.p-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-agent {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Empty State */
+.itin-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.itin-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.itin-empty h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 8px;
+}
+
+.itin-empty p {
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 16px;
+}
+
+.itin-empty-hint {
+  font-size: 13px;
+  color: #a5b4fc !important;
+  background: rgba(99,102,241,0.1);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* My Passengers Modal */
+.my-passengers-modal {
+  max-width: 400px;
+  width: 90%;
+}
+
+.my-passengers-modal .modal-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.my-passengers-modal .modal-body {
+  padding: 20px;
+}
+
+.my-passengers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.my-passengers-grid::-webkit-scrollbar { width: 4px; }
+.my-passengers-grid::-webkit-scrollbar-track { background: transparent; }
+.my-passengers-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+.my-passenger-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.my-passenger-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(99,102,241,0.3);
+}
+
+.mp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.mp-info {
+  flex: 1;
+}
+
+.mp-name {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
+.mp-phone {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+.mp-seat-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.mp-bus-icon {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(251,191,36,0.12);
+  border: 1px solid rgba(251,191,36,0.25);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.mp-seat-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #4ade80;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.25);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.empty-passengers {
+  text-align: center;
+  padding: 40px 0;
+  color: rgba(255,255,255,0.5);
+}
+
+.empty-passengers-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+  opacity: 0.8;
+}
